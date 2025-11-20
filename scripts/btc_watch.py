@@ -7,7 +7,7 @@ FEISHU_WEBHOOK = "https://open.feishu.cn/open-apis/bot/v2/hook/d509003d-059c-42a
 FEISHU_KEYWORD = "BTC"                  # 机器人关键词（按你飞书里设置的来）
 
 SYMBOL = "BTCUSDT"                      # 监控 BTC/USDT
-API_URL = "https://api.binance.us.com/api/v3/ticker/price"
+API_URL = "https://api.binance.com/api/v3/ticker/price"
 
 POLL_INTERVAL = 120                      # 查询间隔（秒），可改大一点
 ALERT_CHANGE_PCT = 1                  # 价格相对上次通知波动超过 0.5% 就推送
