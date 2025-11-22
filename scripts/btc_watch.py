@@ -1,17 +1,15 @@
 import time
 import requests
 from datetime import datetime,timedelta
+from config.config import (
+    FEISHU_WEBHOOK,
+    FEISHU_KEYWORD,
+    SYMBOL,
+    API_URL,
+    POLL_INTERVAL,
+    ALERT_CHANGE_PCT,
+)
 
-# ===== 配置区 =====
-FEISHU_WEBHOOK = "https://open.feishu.cn/open-apis/bot/v2/hook/d509003d-059c-42a2-b1bd-3baa8aabe3a3"  # 飞书自定义机器人 Webhook
-FEISHU_KEYWORD = "BTC"                  # 机器人关键词（按你飞书里设置的来）
-
-SYMBOL = "BTCUSDT"                      # 监控 BTC/USDT
-API_URL = "https://api.binance.us/api/v3/ticker/price"
-
-POLL_INTERVAL = 120                      # 查询间隔（秒），可改大一点
-ALERT_CHANGE_PCT = 1                  # 价格相对上次通知波动超过 0.5% 就推送
-# ==================
 
 
 def send_feishu_text(content: str):
@@ -47,7 +45,7 @@ def main():
 
             if last_notify_price is None:
                 # 第一次直接发一条当前价
-                msg = f"BTC 价格监控启动：当前价格 {price:.2f} USDT（时间：{now}）"
+                msg = f"价格监控启动：当前价格 {price:.2f} USDT（时间：{now}）"
                 send_feishu_text(msg)
                 last_notify_price = price
             else:
@@ -55,7 +53,7 @@ def main():
                 if abs(change_pct) >= ALERT_CHANGE_PCT:
                     direction = "上涨" if change_pct > 0 else "下跌"
                     msg = (
-                        f"BTC 价格{direction}预警：\n"
+                        f"价格{direction}预警：\n"
                         f"当前价格：{price:.2f} USDT\n"
                         f"上次通知价：{last_notify_price:.2f} USDT\n"
                         f"变动：{change_pct:+.2f}%\n"

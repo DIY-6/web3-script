@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+#不提交到git
+.env
+
 # C extensions
 *.so
 
