@@ -12,5 +12,5 @@ FEISHU_KEYWORD = os.getenv("FEISHU_KEYWORD", "BTC")
 SYMBOL = "BTCUSDT"
 API_URL = "https://api.binance.us/api/v3/ticker/price"
 POLL_INTERVAL = 5
-ALERT_CHANGE_PCT = 0.1
+ALERT_CHANGE_PCT = 1
 
